@@ -1,0 +1,68 @@
+{
+  "name": "blockoli2",
+  "version": "1.0.0",
+  "description": "Brockoli is a block coding editor for Arduino.",
+  "main": "main/main.js",
+  "devDependencies": {
+    "electron": "^16.0.7",
+    "electron-builder": "^22.14.13",
+    "pug": "^3.0.2"
+  },
+  "dependencies": {
+    "@serialport/parser-readline": "^9.2.4",
+    "electron-log": "^4.4.6",
+    "electron-prompt": "^1.7.0",
+    "electron-updater": "^4.3.9",
+    "iconv-lite": "^0.6.3",
+    "ini": "^3.0.0",
+    "object-path": "^0.11.8",
+    "serialport": "^9.2.8"
+  },
+  "scripts": {
+    "start": "SET \"NODE_ENV=develop\" && electron .",
+    "publish": "SET \"NODE_ENV=production\" && electron-builder --win -p always"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i33W/blockoli-electron-ja.git"
+  },
+  "author": {
+    "url": "https://pf.kakao.com/_CBvNxb/chat",
+    "name": "BP LAB",
+    "email": "bpcode@naver.com"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/i33W/blockoli-electron-ja/issues"
+  },
+  "homepage": "https://github.com/i33W/blockoli-electron-ja#readme",
+  "build": {
+    "productName": "Blockoli2",
+    "appId": "com.github.i33w.blockoli-electron-ja",
+    "asar": false,
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "i33w",
+        "repo": "blockoli-electron-ja"
+      }
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "./renderer/img/favicon.ico"
+    },
+    "nsis": {
+      "createDesktopShortcut": "always",
+      "oneClick": true,
+      "perMachine": true,
+      "language": 1041,
+      "include": "build/installer.nsh"
+    },
+    "directories": {
+      "output": "./dist/"
+    },
+    "files": [
+      "!.vscode${/*}"
+    ]
+  }
+}
